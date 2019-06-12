@@ -60,8 +60,9 @@ class Tables extends React.Component {
     return (
       <Container>
         <Row>
-          <Col sm="12">
+          <Col sm="12" xs="12">
             <Table
+              xs="12"
               style={{
                 backgroundColor: '#f5f3f3',
                 marginTop: '50px',
@@ -119,7 +120,7 @@ class Tables extends React.Component {
                   <ModalBody>
                     <Container>
                       <Row>
-                        <Col sm="12">
+                        <Col sm="12" xs="12">
                           <FormTitle> EDIT DATA </FormTitle>
                           <form>
                             <InputText name="fullName" />

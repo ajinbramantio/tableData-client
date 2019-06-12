@@ -15,7 +15,7 @@ const GlobalStyle = Styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height:100vh;
+   
     background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5)); 
     
 `
@@ -24,7 +24,9 @@ function App() {
     <BackgroundImg>
       <GlobalStyle>
         <FormInput />
-        <Table />
+        <div style={{ overflowX: 'auto', marginRight: '20px' }}>
+          <Table />
+        </div>
       </GlobalStyle>
     </BackgroundImg>
   )
