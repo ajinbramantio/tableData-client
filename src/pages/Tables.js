@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Styled from 'styled-components'
 import {
   Container,
@@ -44,14 +45,14 @@ class Tables extends React.Component {
 
     this.toggleEdit = this.toggleEdit.bind(this)
   }
-  toggleEdit() {
+  toggleEdit(data) {
+    console.log(data)
+
     this.setState(prevState => ({
       modal: !prevState.modal
     }))
   }
   cancelEdit(data) {
-    console.log(data.modal)
-
     this.setState({
       modal: !data.modal
     })
@@ -82,27 +83,33 @@ class Tables extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>ajin</td>
-                  <td>ajin@gmail.com</td>
-                  <td>08283723</td>
-                  <td>
-                    {' '}
-                    <Button
-                      color="warning"
-                      onClick={event => {
-                        this.toggleEdit(this.state)
-                      }}
-                    >
-                      Edit
-                    </Button>
-                  </td>
-                  <td>
-                    {' '}
-                    <Button color="danger">remove</Button>
-                  </td>
-                </tr>
+                {this.props.dataContacts.map((data, index) => {
+                  // console.log(data)
+
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{data.fullName}</td>
+                      <td>{data.email}</td>
+                      <td>{data.phone}</td>
+                      <td>
+                        {' '}
+                        <Button
+                          color="warning"
+                          onClick={event => {
+                            this.toggleEdit(data)
+                          }}
+                        >
+                          Edit
+                        </Button>
+                      </td>
+                      <td>
+                        {' '}
+                        <Button color="danger">remove</Button>
+                      </td>
+                    </tr>
+                  )
+                })}
 
                 <Modal
                   isOpen={this.state.modal}
@@ -115,7 +122,7 @@ class Tables extends React.Component {
                       this.cancelEdit(this.state)
                     }}
                   >
-                    Modal title
+                    Form Edit
                   </ModalHeader>
                   <ModalBody>
                     <Container>
@@ -161,4 +168,10 @@ class Tables extends React.Component {
   }
 }
 
-export default Tables
+const mapStateToProps = data => {
+  return {
+    dataContacts: data.getData.Data
+  }
+}
+
+export default connect(mapStateToProps)(Tables)
