@@ -40,7 +40,11 @@ class Tables extends React.Component {
     super(props)
 
     this.state = {
-      modal: false
+      modal: false,
+      id: '',
+      fullName: '',
+      email: '',
+      phone: ''
     }
 
     this.toggleEdit = this.toggleEdit.bind(this)
@@ -49,7 +53,11 @@ class Tables extends React.Component {
     console.log(data)
 
     this.setState(prevState => ({
-      modal: !prevState.modal
+      modal: !prevState.modal,
+      id: data.id,
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone
     }))
   }
   cancelEdit(data) {
@@ -130,13 +138,40 @@ class Tables extends React.Component {
                         <Col sm="12" xs="12">
                           <FormTitle> EDIT DATA </FormTitle>
                           <form>
-                            <InputText name="fullName" />
+                            <InputText
+                              type="text"
+                              name="fullName"
+                              value={this.state.fullName}
+                              onChange={event => {
+                                this.setState({
+                                  fullName: event.target.value
+                                })
+                              }}
+                            />
 
                             {/* email */}
-                            <InputText name="email" type="email" />
+                            <InputText
+                              name="email"
+                              type="email"
+                              value={this.state.email}
+                              onChange={event => {
+                                this.setState({
+                                  email: event.target.value
+                                })
+                              }}
+                            />
 
                             {/* phone number */}
-                            <InputText type="text" name="phone" />
+                            <InputText
+                              type="text"
+                              name="phone"
+                              value={this.state.phone}
+                              onChange={event => {
+                                this.setState({
+                                  phone: event.target.value
+                                })
+                              }}
+                            />
                             <ModalFooter style={{ marginTop: '20px' }}>
                               <Button type="submit" color="primary">
                                 Update
