@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Styled from 'styled-components'
 
+import FormInput from './pages/FormInput'
+import Table from './pages/Tables'
+
+const BackgroundImg = Styled.div`
+    background-image: url('/images/bg-01.jpg ');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+`
+const GlobalStyle = Styled.div`
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height:100vh;
+    background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5)); 
+    
+`
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BackgroundImg>
+      <GlobalStyle>
+        <FormInput />
+        <Table />
+      </GlobalStyle>
+    </BackgroundImg>
+  )
 }
 
-export default App;
+export default App
