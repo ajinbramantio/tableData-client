@@ -50,8 +50,6 @@ class Tables extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this)
   }
   toggleEdit(data) {
-    console.log(data)
-
     this.setState(prevState => ({
       modal: !prevState.modal,
       id: data.id,
@@ -92,8 +90,6 @@ class Tables extends React.Component {
               </thead>
               <tbody>
                 {this.props.dataContacts.map((data, index) => {
-                  // console.log(data)
-
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -204,9 +200,13 @@ class Tables extends React.Component {
 }
 
 const mapStateToProps = data => {
-  return {
-    dataContacts: data.getData.Data
+  console.log(data)
+
+  let newData = {
+    dataContacts: data.getData.dataContacts
   }
+  // console.log(newData)
+  return newData
 }
 
 export default connect(mapStateToProps)(Tables)
